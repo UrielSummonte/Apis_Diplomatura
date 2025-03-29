@@ -1,12 +1,39 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Rick and Morty Explorer
 
-Currently, two official plugins are available:
+*Rick and Morty Explorer* es una aplicaciòn creada en React, Tailwindcss y React-Toastify, cuya función es permitir la busqueda de personajes en la API https://rickandmortyapi.com/, con la posibilidad de añadirles una descripción  y agregar o elminirar personajes de una lista de favoritos que se almacena en localStorage.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+## Features
+
+- Búsqueda de personajes con limitador resultados
+- Agregar a favoritos
+- Eliminar de favoritos
+- Añadir descripción del personaje
+- Editar descripción del personaje
+
+
+## Tech Stack
+
+**Front-End:** React Vite, TailwindCSS, React Toastify
+
+**Almacenamiento:** LocalStorage
+
+
+## API Reference
+
+#### Get all items
+
+```http
+  GET https://rickandmortyapi.com/api/character
+```
+
+#### Get item
+
+```http
+  GET https://rickandmortyapi.com/api/character/${id}
+```
+
+
