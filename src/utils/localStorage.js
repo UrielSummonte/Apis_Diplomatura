@@ -10,38 +10,17 @@ export const getFavorites = () => {
   }
 }
 
-// export const addToFavorites = (character) => {
-//   try {
-//     const favorites = getFavorites()
-
-//     const existingIndex = favorites.findIndex((fav) => fav.id === character.id)
-
-//     if (existingIndex >= 0) {
-//       favorites[existingIndex] = character
-//     } else {
-//       favorites.push(character)
-//     }
-
-//     localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites))
-//     return favorites
-//   } catch (error) {
-//     console.error("Error adding to favorites:", error)
-//     return []
-//   }
-// }
-
 export const addToFavorites = (character) => {
   try {
     const favorites = getFavorites();
 
-    // Verificar si el personaje ya está en favoritos
     const exists = favorites.some((fav) => fav.id === character.id);
     if (exists) {
       console.warn(`El personaje con ID ${character.id} ya está en favoritos.`);
-      return favorites; // No lo agrega si ya existe
+      return favorites; 
     }
 
-    favorites.push(character); // Agrega el personaje si no estaba
+    favorites.push(character); 
 
     localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
     return favorites;
@@ -65,8 +44,8 @@ export const removeFromFavorites = (characterId) => {
 
 export const deleteFavorites = () => {
   try {
-    localStorage.removeItem(FAVORITES_KEY);  // Elimina la clave de los favoritos en localStorage
-    return [];  // Devuelve un array vacío
+    localStorage.removeItem(FAVORITES_KEY);  
+    return [];  
   } catch (error) {
     console.error("Error cleaning favorites:", error);
     return [];

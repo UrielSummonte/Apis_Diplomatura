@@ -1,5 +1,3 @@
-"use client"
-
 import { useState } from "react"
 import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
@@ -57,11 +55,11 @@ function App() {
 
         <footer className="bg-gray-800 text-white py-6">
           <div className="container mx-auto px-4 text-center">
-            <p className="mt-2">Buscador de Personajes con datos proporcionados por la API de Rick and Morty</p>
+            <p className="mt-2">Buscador de Personajes. Datos proporcionados por la API de Rick and Morty</p>
           </div>
         </footer>
 
-        <ToastContainer position="bottom-right" />
+        <ToastContainer position="top-right" />
       </div>
     </FavoritesProvider>
   )

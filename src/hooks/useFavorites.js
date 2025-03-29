@@ -53,10 +53,9 @@ export const useFavorites = () => {
     [favorites],
   )
 
-   // Nueva función para vaciar la lista de favoritos
    const clearFavorites = () => {
-    deleteFavorites()  // Limpiar los favoritos en localStorage
-    setFavorites([])   // Limpiar el estado de favoritos
+    deleteFavorites()  
+    setFavorites([]) 
     toast.info("Todos los favoritos han sido eliminados.")
   }
 

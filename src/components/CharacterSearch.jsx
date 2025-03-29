@@ -3,17 +3,10 @@ import { useState } from 'react'
 const CharacterSearch = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState('')
   const [count, setCount] = useState(20)
-  const [error, setError] = useState('')
 
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    if (!searchTerm.trim()) {
-      setError('Por favor ingresa un término de búsqueda')
-      return
-    }
-
-    setError('')
     onSearch(searchTerm, count)
   }
 
@@ -21,9 +14,6 @@ const CharacterSearch = ({ onSearch }) => {
     <div className="bg-white p-6 rounded-lg shadow-md mb-8">
       <h2 className="text-xl font-bold mb-4">Buscar Personajes</h2>
       
-      {/* Mostrar errores si los hay */}
-      {error && <div className="text-red-500 text-sm mb-4">{error}</div>}
-
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label htmlFor="searchTerm" className="block text-sm font-medium text-gray-700 mb-1">

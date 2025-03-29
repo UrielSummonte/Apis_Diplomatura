@@ -19,7 +19,6 @@ export const useCharacterSearch = () => {
     try {
       const data = await searchCharacters(searchTerm, count)
 
-      // Si los datos son iguales a los anteriores, no actualizamos el estado ni notificamos
       if (JSON.stringify(data) === JSON.stringify(characters)) {
         return
       }
