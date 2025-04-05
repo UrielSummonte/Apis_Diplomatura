@@ -4,10 +4,9 @@ import { useFavoritesContext } from "../context/FavoritesContext"
 const FavoritesList = () => {
   const { favorites, clearFavorites } = useFavoritesContext()
 
-  // Manejar la eliminación de todos los favoritos
   const handleClearFavorites = () => {
     if (favorites.length > 0) {
-      clearFavorites()  // Llama a la función que limpia los favoritos
+      clearFavorites()  
       toast.info("Todos los favoritos han sido eliminados.")
     } else {
       toast.warn("No hay favoritos para eliminar.")

@@ -1,10 +1,11 @@
-import { useState } from "react"
-import { Heart, X } from "lucide-react"
-import { useFavoritesContext } from "../context/FavoritesContext"
+import { useState } from 'react'
+import { Heart, X } from 'lucide-react'
+import { useFavoritesContext } from '../context/FavoritesContext'
 
 const CharacterCard = ({ character, showRemoveButton = false }) => {
-  const { isFavorite, toggleFavorite, updateDescription } = useFavoritesContext()
-  const [description, setDescription] = useState(character.description || "")
+  const { isFavorite, toggleFavorite, updateDescription } =
+    useFavoritesContext()
+  const [description, setDescription] = useState(character.description || '')
   const [isEditing, setIsEditing] = useState(false)
 
   const isCharacterFavorite = isFavorite(character.id)
@@ -21,16 +22,29 @@ const CharacterCard = ({ character, showRemoveButton = false }) => {
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105">
       <div className="relative">
-        <img src={character.image} alt={character.name} className="w-full h-64 object-cover" />
+        <img
+          src={character.image}
+          alt={character.name}
+          className="w-full h-64 object-cover"
+        />
         <button
           onClick={handleToggleFavorite}
-          className={`absolute top-2 right-2 p-2 rounded-full ${isCharacterFavorite ? "bg-red-500" : "bg-gray-200"}`}
+          className={`absolute top-2 right-2 p-2 rounded-full ${
+            isCharacterFavorite ? 'bg-red-500' : 'bg-gray-200'
+          }`}
         >
-          <Heart className={`h-5 w-5 ${isCharacterFavorite ? "text-white fill-current" : "text-gray-600"}`} />
+          <Heart
+            className={`h-5 w-5 ${
+              isCharacterFavorite ? 'text-white fill-current' : 'text-gray-600'
+            }`}
+          />
         </button>
 
         {showRemoveButton && (
-          <button onClick={handleToggleFavorite} className="absolute top-2 left-2 p-2 rounded-full bg-gray-200">
+          <button
+            onClick={handleToggleFavorite}
+            className="absolute top-2 left-2 p-2 rounded-full bg-gray-200"
+          >
             <X className="h-5 w-5 text-gray-600" />
           </button>
         )}
@@ -57,8 +71,20 @@ const CharacterCard = ({ character, showRemoveButton = false }) => {
         <div className="mt-4">
           <div className="flex justify-between items-center mb-2">
             <h4 className="font-medium">Descripción:</h4>
-            {!isEditing && (
-              <button onClick={() => setIsEditing(true)} className="text-xs text-purple-600 hover:text-purple-800">
+            {isCharacterFavorite ? (
+              !isEditing && (
+                <button
+                  onClick={() => setIsEditing(true)}
+                  className="text-xs text-purple-600 hover:text-purple-800 cursor-pointer"
+                >
+                  Editar
+                </button>
+              )
+            ) : (
+              <button
+              onClick={() => setIsEditing(false)}
+                className="text-xs text-purple-300 disabled:"
+              >
                 Editar
               </button>
             )}
@@ -74,16 +100,24 @@ const CharacterCard = ({ character, showRemoveButton = false }) => {
                 placeholder="Agrega una descripción para este personaje..."
               />
               <div className="flex justify-end mt-2 space-x-2">
-                <button onClick={() => setIsEditing(false)} className="px-3 py-1 text-xs bg-gray-200 rounded-md">
+                <button
+                  onClick={() => setIsEditing(false)}
+                  className="px-3 py-1 text-xs bg-gray-200 rounded-md"
+                >
                   Cancelar
                 </button>
-                <button onClick={saveDescription} className="px-3 py-1 text-xs bg-purple-600 text-white rounded-md">
+                <button
+                  onClick={saveDescription}
+                  className="px-3 py-1 text-xs bg-purple-600 text-white rounded-md"
+                >
                   Guardar
                 </button>
               </div>
             </div>
           ) : (
-            <p className="text-gray-600 text-sm">{description || "No hay descripción agregada."}</p>
+            <p className="text-gray-600 text-sm">
+              {description || 'No hay descripción agregada.'}
+            </p>
           )}
         </div>
       </div>
@@ -92,4 +126,3 @@ const CharacterCard = ({ character, showRemoveButton = false }) => {
 }
 
 export default CharacterCard
-
